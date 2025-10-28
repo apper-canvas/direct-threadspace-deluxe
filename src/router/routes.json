@@ -1,0 +1,177 @@
+{
+  "/": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Homepage is public",
+            "rule": "public"
+          }
+        ]
+      }
+    }
+  },
+  "/popular": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Popular page is public",
+            "rule": "public"
+          }
+        ]
+      }
+    }
+  },
+  "/communities": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Communities page is public",
+            "rule": "public"
+          }
+        ]
+      }
+    }
+  },
+  "/search": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Search is public",
+            "rule": "public"
+          }
+        ]
+      }
+    }
+  },
+  "/community/:communityName": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Community detail is public",
+            "rule": "public"
+          }
+        ]
+      }
+    }
+  },
+  "/post/:id": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Post detail is public",
+            "rule": "public"
+          }
+        ]
+      }
+    }
+  },
+  "/user/:username": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "User profile is public",
+            "rule": "public"
+          }
+        ]
+      }
+    }
+  },
+  "/saved": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "User must be logged in to view saved posts",
+            "rule": "authenticated"
+          }
+        ]
+      },
+      "redirectOnDeny": "/login"
+    }
+  },
+  "/login": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Login page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/signup": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Signup page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/callback": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Callback is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/error": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Error page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/prompt-password/:appId/:emailAddress/:provider": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Password prompt is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/reset-password/:appId/:fields": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Password reset is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  }
+}

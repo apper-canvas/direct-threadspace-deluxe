@@ -1,12 +1,12 @@
-import { useState, useRef, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '@/contexts/AuthContext'
-import { toast } from 'react-toastify'
-import ApperIcon from '@/components/ApperIcon'
-import SearchBar from '@/components/molecules/SearchBar'
-import Button from '@/components/atoms/Button'
-import Select from '@/components/atoms/Select'
-import { CommunityService } from '@/services/api/communityService'
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { CommunityService } from "@/services/api/communityService";
+import ApperIcon from "@/components/ApperIcon";
+import Select from "@/components/atoms/Select";
+import Button from "@/components/atoms/Button";
+import SearchBar from "@/components/molecules/SearchBar";
+import { useAuth } from "@/contexts/AuthContext";
 const Header = ({ onCreatePost, onLoginClick }) => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -41,7 +41,7 @@ const Header = ({ onCreatePost, onLoginClick }) => {
 
   const handleProfileClick = () => {
     setShowDropdown(false);
-    navigate(`/user/${user.username}`);
+    navigate(`/user/${user?.username || 'guest'}`);
   };
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
