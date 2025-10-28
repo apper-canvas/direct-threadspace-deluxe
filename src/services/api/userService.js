@@ -405,7 +405,6 @@ export const UserService = {
       return true;
     } catch (error) {
       console.error('Error deleting user:', error?.response?.data?.message || error);
-      return false;
 return false;
     }
   }
