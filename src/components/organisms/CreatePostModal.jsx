@@ -9,7 +9,7 @@ import Input from "@/components/atoms/Input";
 import Textarea from "@/components/atoms/Textarea";
 import TagInput from "@/components/atoms/TagInput";
 import { cn } from "@/utils/cn";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/layouts/Root";
 
 const CreatePostModal = ({ isOpen, onClose, preSelectedCommunity }) => {
 const { user } = useAuth();
