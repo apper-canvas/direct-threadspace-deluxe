@@ -130,7 +130,7 @@ export default function Root() {
     }
   };
 
-  const logout = async () => {
+const logout = async () => {
     try {
       dispatch(clearUser());
       navigate("/login");
@@ -145,7 +145,7 @@ export default function Root() {
     return <LoadingSpinner />;
   }
 
-  return (
+return (
     <AuthContext.Provider value={{ logout, isInitialized: authInitialized }}>
       <Outlet />
     </AuthContext.Provider>
