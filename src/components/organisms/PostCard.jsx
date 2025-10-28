@@ -2,7 +2,7 @@ import { formatDistanceToNow } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/layouts/Root";
 import { PostService, isSaved, toggleSave } from "@/services/api/postService";
 import ApperIcon from "@/components/ApperIcon";
 import VoteButtons from "@/components/molecules/VoteButtons";
