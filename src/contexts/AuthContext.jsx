@@ -1,5 +1,4 @@
 import React, { createContext, useContext } from "react";
-import Error from "@/components/ui/Error";
 
 const AuthContext = createContext(null);
 
