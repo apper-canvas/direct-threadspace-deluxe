@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/layouts/Root";
 import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
 import { CommunityService } from "@/services/api/communityService";
