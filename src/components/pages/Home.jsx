@@ -1,21 +1,13 @@
 import { useState } from "react";
-import { useOutletContext, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useOutletContext } from "react-router-dom";
 import PostFeed from "@/components/organisms/PostFeed";
 import CreatePostModal from "@/components/organisms/CreatePostModal";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const { user } = useSelector((state) => state.user);
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
   const { searchQuery } = useOutletContext() || { searchQuery: "" };
 
-const handleCreatePost = () => {
-    if (!user) {
-      const currentPath = window.location.pathname + window.location.search;
-      navigate(`/login?redirect=${encodeURIComponent(currentPath)}`);
-      return;
-    }
+  const handleCreatePost = () => {
     setIsCreatePostOpen(true);
   };
 
@@ -23,10 +15,8 @@ const handleCreatePost = () => {
     <div className="pb-20 lg:pb-6">
       <PostFeed 
         filter="all"
-searchQuery={searchQuery}
+        searchQuery={searchQuery}
         onCreatePost={handleCreatePost}
-        isCreatePostOpen={isCreatePostOpen}
-        onCloseCreatePost={() => setIsCreatePostOpen(false)}
       />
       
       <CreatePostModal

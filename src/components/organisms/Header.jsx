@@ -1,16 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { search } from "@/services/api/postService";
 import { CommunityService } from "@/services/api/communityService";
-import { useAuth } from "@/layouts/Root";
 import ApperIcon from "@/components/ApperIcon";
 import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
-import Login from "@/components/pages/Login";
 import SearchBar from "@/components/molecules/SearchBar";
-
-const Header = ({ onCreatePost }) => {
+import { useAuth } from "@/layouts/Root";
+const Header = ({ onCreatePost, onLoginClick }) => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -28,9 +25,8 @@ const Header = ({ onCreatePost }) => {
   }, []);
 
   const handleCreatePost = () => {
-if (!user) {
-      const currentPath = window.location.pathname + window.location.search;
-      navigate(`/login?redirect=${encodeURIComponent(currentPath)}`);
+    if (!user) {
+      onLoginClick();
       return;
     }
     onCreatePost();
@@ -118,14 +114,7 @@ if (!user) {
               )}
             </div>
           ) : (
-<Button 
-              onClick={() => {
-                const currentPath = window.location.pathname + window.location.search;
-                navigate(`/login?redirect=${encodeURIComponent(currentPath)}`);
-              }} 
-              size="md" 
-              variant="secondary"
-            >
+            <Button onClick={onLoginClick} size="md" variant="secondary">
               Login
             </Button>
           )}

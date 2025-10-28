@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { CommunityService } from "@/services/api/communityService";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
-import CreatePostModal from "@/components/organisms/CreatePostModal";
 import PostFeed from "@/components/organisms/PostFeed";
+import CreatePostModal from "@/components/organisms/CreatePostModal";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
+import { CommunityService } from "@/services/api/communityService";
 
 const CommunityDetail = () => {
-  const { user } = useSelector((state) => state.user);
   const { communityName } = useParams();
   const navigate = useNavigate();
   const [community, setCommunity] = useState(null);
@@ -49,14 +47,8 @@ const [joined, setJoined] = useState(false);
     }
   }, [communityName]);
 
-const handleJoin = () => {
-    if (!user) {
-      const currentPath = window.location.pathname + window.location.search;
-      navigate(`/login?redirect=${encodeURIComponent(currentPath)}`);
-      return;
-    }
-
-    const newJoinedState = !joined;
+  const handleJoin = () => {
+const newJoinedState = !joined;
     setJoined(newJoinedState);
     
     if (newJoinedState) {

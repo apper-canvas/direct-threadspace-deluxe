@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { CommunityService } from "@/services/api/communityService";
 import ApperIcon from "@/components/ApperIcon";
@@ -11,8 +10,7 @@ import Empty from "@/components/ui/Empty";
 import Error from "@/components/ui/Error";
 import { cn } from "@/utils/cn";
 const CommunityList = () => {
-const navigate = useNavigate();
-  const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const [communities, setCommunities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -44,13 +42,6 @@ const handleCommunityClick = (communityName) => {
 
 const handleJoinCommunity = (e, communityId, communityName) => {
     e.stopPropagation();
-    
-    if (!user) {
-      const currentPath = window.location.pathname + window.location.search;
-      navigate(`/login?redirect=${encodeURIComponent(currentPath)}`);
-      return;
-    }
-    
     const isCurrentlyJoined = joinedCommunities.includes(communityId);
     
     if (isCurrentlyJoined) {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import LoginModal from "@/components/organisms/LoginModal";
 import ApperIcon from "@/components/ApperIcon";
 import CreatePostModal from "@/components/organisms/CreatePostModal";
 import Sidebar from "@/components/organisms/Sidebar";
@@ -8,6 +9,7 @@ import { cn } from "@/utils/cn";
 const Layout = () => {
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     if (isMobileSidebarOpen) {
@@ -31,9 +33,10 @@ const Layout = () => {
 
   return (
 <div className="min-h-screen bg-background">
-<Header 
+      <Header 
         onSearch={handleSearch} 
         onCreatePost={handleCreatePost}
+        onLoginClick={() => setIsLoginOpen(true)}
       />
       
       <div className="flex">
@@ -89,6 +92,11 @@ const Layout = () => {
 <CreatePostModal
         isOpen={isCreatePostOpen}
         onClose={() => setIsCreatePostOpen(false)}
+      />
+
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
       />
     </div>
   );
