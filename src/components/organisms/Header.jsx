@@ -6,7 +6,7 @@ import ApperIcon from "@/components/ApperIcon";
 import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
 import SearchBar from "@/components/molecules/SearchBar";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/layouts/Root";
 const Header = ({ onCreatePost, onLoginClick }) => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
